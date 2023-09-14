@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import MainNav from './MainNav'
+import Divider from './Divider'
 
 const StyledHeader = styled.nav`
   display: flex;
@@ -11,13 +12,15 @@ const StyledHeader = styled.nav`
   font-weight: 400;
   line-height: normal;
   gap: 2.3rem;
-  border-bottom: 1px solid #6e6767;
 `
 
 export default function Header () {
   return (
-    <StyledHeader>
-      <MainNav />
-    </StyledHeader>
+    <>
+      <StyledHeader>
+        <MainNav />
+      </StyledHeader>
+      <Divider/>
+    </>
   )
 }

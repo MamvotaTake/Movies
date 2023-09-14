@@ -18,8 +18,11 @@ import styled, { css } from 'styled-components'
 
 const sizes = {
   small: css`
+    width: 121px;
+    height: 57px;
     font-size: 1.2rem;
-    padding: 0.4rem 0.8rem;
+    padding: 1.3rem 0.8rem;
+    border-radius: 1.75rem;
     text-transform: uppercase;
     font-weight: 600;
     text-align: center;

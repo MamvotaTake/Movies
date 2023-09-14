@@ -3,7 +3,9 @@ import Header from './Header'
 import styled from 'styled-components'
 
 const StyledAppLayout = styled.div`
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 74rem;
   background: linear-gradient(150deg, #233458 13.36%, #111827 98.15%);
 `
 

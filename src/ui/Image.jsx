@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components'
 
 const sizes = {
   small: css`
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
     `,
   large: css`
