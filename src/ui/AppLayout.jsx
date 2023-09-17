@@ -3,14 +3,15 @@ import Header from './Header'
 import styled from 'styled-components'
 
 const StyledAppLayout = styled.div`
-  display: flex;
   flex-direction: column;
-  height: 74rem;
+
   background: linear-gradient(150deg, #233458 13.36%, #111827 98.15%);
 `
 
 const Main = styled.main`
-  padding: 4rem 4.8rem 6.4rem;
+  display: flex;
+  padding: 4rem 4.8rem 20.4rem;
+  background: linear-gradient(15deg, #233458 30.36%, #111827 50.15%);
 `
 
 const Container = styled.div`

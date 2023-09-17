@@ -1,11 +1,23 @@
+import MovieItem from './MovieItem'
+import Spinner from '../../ui/Spinner'
+import { useMovies } from '../../contexts/MoviesContext'
+import styled from 'styled-components'
 
-export default function MoviesList({ movie }) {
-  const { title } = movie;
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 5rem;
+  row-gap: 10em;
+  height: 100%;
+  cursor: pointer;
+`
+export default function MoviesList () {
+  const { isLoading, movies } = useMovies()
+
+  if (isLoading) return <Spinner />
   return (
-    <div>
-      <p>
-        {title}
-      </p>
-    </div>
+    <Container>
+      {movies.map(movie => <MovieItem key={movie.rank} movie={movie} />)}
+    </Container>
   )
 }

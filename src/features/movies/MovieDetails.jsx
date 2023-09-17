@@ -9,11 +9,11 @@ const MovieDetailsContainer = styled.div`
   grid-row-gap: 0px;
   grid-area: 1 / 1 / 2 / 2;
 `
-export default function MovieDetails () {
+export default function MovieDetails ({ movie }) {
   return (
     <MovieDetailsContainer>
-      <MovieImage />
-      <MovieDescription />
+      <MovieImage movie={movie} />
+      <MovieDescription movie={movie} />
     </MovieDetailsContainer>
   )
 }

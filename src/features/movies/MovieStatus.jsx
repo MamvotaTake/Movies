@@ -10,12 +10,16 @@ const Container = styled.div`
 const StatuContent = styled(Container)`
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.3rem;
     color: #fff;
 
+    & span{
+      font-size: 1rem;
+    }
+
     & svg {
-        width: 2.4rem;
-        height: 2.4rem;
+        width: 2rem;
+        height: 2rem;
         color: grey;
     }
 `
@@ -24,15 +28,15 @@ export default function MovieStatus () {
     <Container>
       <StatuContent>
         <MdFavorite />
-        <span>Favorite</span>
+        {/* <span>Favorite</span> */}
       </StatuContent>
       <StatuContent>
         <MdBookmarkRemove />
-        <span>Watch later</span>
+        {/* <span>Watch later</span> */}
       </StatuContent>
       <StatuContent>
         <AiOutlineEye />
-        <span>Watched</span>
+        {/* <span>Watched</span> */}
       </StatuContent>
     </Container>
   )

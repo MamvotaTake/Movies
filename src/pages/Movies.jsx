@@ -1,10 +1,17 @@
-import { useMovies } from '../contexts/MoviesContext'
+import styled from "styled-components";
+import MoviesList from "../features/movies/MoviesList";
 
-export default function Movies () {
-  const { movies } = useMovies()
-  console.log(movies)
+const Container = styled.div`
+display: flex;
+`
+export default function Movies() {
+  
+  
   return (
-    
-    <></>
+    <>
+      <Container>
+        <MoviesList/>
+      </Container>
+    </>
   )
 }

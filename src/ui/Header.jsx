@@ -6,6 +6,7 @@ const StyledHeader = styled.nav`
   display: flex;
   align-items: center;
   color: #fff;
+  background: linear-gradient(150deg, #233458 13.36%, #111827 98.15%);
   padding: 2rem 4.8rem 1.4rem;
   font-size: 1rem;
   font-style: normal;

@@ -72,10 +72,13 @@ const StyledList = styled.div`
   }
 `
 
-export default function MovieDescription () {
+export default function MovieDescription ({ movie }) {
+  const genre = movie?.genre.join(', ')
   return (
     <StyledMovieDescription>
-      <Heading as='h1'>One Piece Film : Red</Heading>
+      <Heading as='h1'>
+        {movie?.title}
+      </Heading>
       <Container>
         <ButtonContainer>
           <Button size='medium'>
@@ -91,25 +94,30 @@ export default function MovieDescription () {
           <div>
             <Heading as='h3'>Storyline</Heading>
             <Paragraph>
-              Including interactive, real-world scenarios in your online
-              training can help learners put what they learn into practice. Want
-              to see an example of what that could look like? Check out this
-              project or download the file to take a closer look.
+              {movie?.description}
             </Paragraph>
             <Row>
               <StyledList>
                 Rating
-                <span>8.9</span>
+                <span>{movie?.rating}</span>
               </StyledList>
 
               <StyledList>
                 Release year
-                <span>2022</span>
+                <span>{movie?.year}</span>
               </StyledList>
 
               <StyledList>
                 Genres
-                <span>Adventure, Fantacy</span>
+                <span
+                  style={{
+                    background: 'blue',
+                    padding: '0.2rem',
+                    borderRadius: '0.3rem'
+                  }}
+                >
+                  [{genre}]
+                </span>
               </StyledList>
 
               <StyledList>
@@ -126,12 +134,11 @@ export default function MovieDescription () {
           <div>
             <Heading as='h4'>Written By:</Heading>
             <Card>
-              <Image
-                size='small'
-                src='https://s3-alpha-sig.figma.com/img/f55f/6e37/afd21e0adf22153b4dde919444830c92?Expires=1695600000&Signature=iRlnovwv2ffA9VbPzovytGud3j5OFNpcI8OqB3Y6WLUI0RKQOJTgqK-rw0nq3ewsSDkjceJVbIgMV2qjmoimcm3vDaUXnTSf38FCj1xs0blXoCh5-4Ksxhzaay3V~S2mK3s7EJFcCbc22X6anGF8M28hf000VLbe0FcJpBeRx4J4BedzMquciDxxCn9OcMdCkJ~zcI2hwDt8aZm7j9MToLhRQz5uGXidpd8chuIr~tt3aHnEsHEWL8s37HOmZxL1c6FXVs4OrncwqCTSTsFyErQDuD3PF0ecwI84AUO6VnYejdSTdcO7KXJLlT6m3-ApeBdKFrLQGWKGtc9YuL6INw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
-              />
+              <Image size='small' src={movie?.thumbnail} />
               <Row>
-                <Heading as='h4'>Takesure Mamvota</Heading>
+                <Heading as='h4'>
+                  {movie?.director}
+                </Heading>
                 <Span>Official Creator & manga artist</Span>
               </Row>
             </Card>

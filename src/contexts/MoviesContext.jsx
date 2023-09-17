@@ -2,7 +2,9 @@
 import { createContext, useContext, useEffect, useReducer } from 'react'
 
 const MoviesContext = createContext()
-const KEY = '61d162be'
+// const KEY = '61d162be'
+
+const BASE_URL = 'http://localhost:8000'
 
 const initialState = {
   movies: [],
@@ -24,10 +26,9 @@ function reducer (state, action) {
       }
 
     default:
-      return state
+      throw new Error('Unknown action type')
   }
 }
-
 
 function MoviesProvider ({ children }) {
   const [{ movies, isLoading, currentMovie }, dispatch] = useReducer(
@@ -37,13 +38,21 @@ function MoviesProvider ({ children }) {
 
   useEffect(function () {
     async function fetchMovies () {
+      /* const url = 'https://imdb-top-100-movies.p.rapidapi.com/'
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key':
+            '51432845bdmshd3167b5106e8a52p1b0f47jsn0b0c4a437346',
+          'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+        }
+      } */
+
       dispatch({ type: 'loading' })
       try {
-        const res = await fetch(
-          `https://www.omdbapi.com/?page=10&s=take&apikey=${KEY}`
-        )
+        const res = await fetch(`${BASE_URL}/movies`)
         const data = await res.json()
-        dispatch({ type: 'movies/loaded', payload: data.Search })
+        dispatch({ type: 'movies/loaded', payload: data })
       } catch (error) {
         console.log(error)
       }
@@ -52,8 +61,30 @@ function MoviesProvider ({ children }) {
     fetchMovies()
   }, [])
 
+  /* const getMovie = useCallback(
+    async function getMovie (id) {
+      if (String(id) === currentMovie.id) return
+      const url = `https://imdb-top-100-movies.p.rapidapi.com/${id}`
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key':
+            '51432845bdmshd3167b5106e8a52p1b0f47jsn0b0c4a437346',
+          'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+        }
+      }
 
-
+      dispatch({ type: 'loading' })
+      try {
+        const response = await fetch(url, options)
+        const data = await response.json()
+        dispatch({ type: 'movies/loaded', payload: data })
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    [currentMovie.id]
+  ) */
 
   return (
     <MoviesContext.Provider value={{ movies, isLoading, currentMovie }}>
